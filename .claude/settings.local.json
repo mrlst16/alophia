@@ -7,7 +7,12 @@
       "Bash(dotnet clean:*)",
       "Bash(msbuild Alophia.slnx /p:Configuration=Debug /p:Platform=x64)",
       "Bash(rm -f \"c:\\\\Users\\\\mlantz\\\\source\\\\repos\\\\alophia\\\\Alophia\\\\Alophia\\\\Views\\\\ShellPage.xaml\" \"c:\\\\Users\\\\mlantz\\\\source\\\\repos\\\\alophia\\\\Alophia\\\\Alophia\\\\Views\\\\ShellPage.xaml.cs\")",
-      "Bash(rm -rf obj)"
+      "Bash(rm -rf obj)",
+      "Bash(dotnet new:*)",
+      "Bash(cp Alophia/Models/*.cs Alophia.Models/)",
+      "Bash(cp Alophia/Services/*.cs Alophia.Services/)",
+      "Read(//mnt/c/Users/mlantz/source/repos/alophia/**)",
+      "Bash(pwsh -Command \":*)"
     ]
   }
 }

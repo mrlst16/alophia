@@ -13,6 +13,6 @@
         <MicaBackdrop />
     </Window.SystemBackdrop>
 
-    <Grid/>
+    <Frame x:Name="RootFrame"/>
 
 </Window>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Alophia.Views.RequirementsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="400"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Requirements List -->
+        <Grid Grid.Column="0" BorderThickness="0,0,0.5,0" BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}">
+            <StackPanel Padding="20" Spacing="12">
+                <TextBlock Text="Requirements" FontSize="16" FontWeight="SemiBold"/>
+                <TextBlock Text="Epic: EP-1 - State Filings Platform" FontSize="13" Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+                <TextBlock Text="Epic: EP-2 - Web Component Library" FontSize="13" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                <TextBlock Text="Story: ST-1 - Filing submission form" Margin="20,0,0,0" FontSize="12" Foreground="{ThemeResource TextFillColorTertiaryBrush}"/>
+                <TextBlock Text="Story: ST-2 - Filing status tracking" Margin="20,0,0,0" FontSize="12" Foreground="{ThemeResource TextFillColorTertiaryBrush}"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Splitter -->
+        <Rectangle Grid.Column="1" Width="1" Fill="{ThemeResource DividerStrokeColorDefaultBrush}"/>
+
+        <!-- Detail Panel -->
+        <Grid Grid.Column="2" Padding="20" BorderThickness="0.5,0,0,0" BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}">
+            <ScrollViewer>
+                <StackPanel Spacing="12">
+                    <TextBlock Text="EP-1" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                    <TextBlock Text="State Filings Platform" FontSize="18" FontWeight="SemiBold"/>
+                    <TextBlock Text="Status: In Progress" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                    <TextBlock Text="Assignee: BeckyBot" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+
+                    <TextBlock Text="Description" FontSize="13" FontWeight="SemiBold" Margin="0,12,0,0"/>
+                    <TextBlock Text="Build a full-stack platform allowing users to submit, track, and manage state filing documents across all US states and territories." TextWrapping="WrapWholeWords" FontSize="13"/>
+
+                    <TextBlock Text="Acceptance Criteria" FontSize="13" FontWeight="SemiBold" Margin="0,12,0,0"/>
+                    <TextBlock Text="✓ Users can submit filings for any US state" FontSize="12"/>
+                    <TextBlock Text="✓ Filing status is tracked in real time" FontSize="12"/>
+                    <TextBlock Text="✓ All actions are audit logged" FontSize="12"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Page>

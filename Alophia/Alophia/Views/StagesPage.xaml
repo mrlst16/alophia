@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Alophia.Views.StagesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Padding="24">
+        <StackPanel Spacing="20">
+            <TextBlock Text="Project Timeline" FontSize="18" FontWeight="SemiBold"/>
+            <TextBlock Text="Gantt chart visualization will render here with Win2D" FontSize="14" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+
+            <!-- Placeholder for Gantt chart -->
+            <Rectangle Height="400" Fill="{ThemeResource LayerFillColorDefaultBrush}" Stroke="{ThemeResource DividerStrokeColorDefaultBrush}" StrokeThickness="1"/>
+
+            <!-- Legend -->
+            <StackPanel Spacing="8">
+                <TextBlock Text="Legend" FontSize="14" FontWeight="SemiBold"/>
+                <StackPanel Orientation="Horizontal" Spacing="24">
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <Rectangle Width="24" Height="8" Fill="#EEEDFE"/>
+                        <TextBlock Text="Expected" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <Rectangle Width="24" Height="8" Fill="#534AB7"/>
+                        <TextBlock Text="Elapsed / Done" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Alophia.Views.ArchitecturePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Tabs -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Padding="20,12" BorderThickness="0,0,0,0.5" BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}">
+            <Button x:Name="SystemOverviewButton" Content="System Overview" Background="Transparent" Foreground="{ThemeResource TextFillColorPrimaryBrush}" FontSize="13" Padding="0"/>
+            <TextBlock Text="  |  " Foreground="{ThemeResource DividerStrokeColorDefaultBrush}" Margin="12,0"/>
+            <Button x:Name="EntityRelationshipsButton" Content="Entity Relationships" Background="Transparent" Foreground="{ThemeResource TextFillColorSecondaryBrush}" FontSize="13" Padding="0"/>
+        </StackPanel>
+
+        <!-- Content -->
+        <Grid Grid.Row="1" Padding="24">
+            <StackPanel Spacing="20">
+                <TextBlock Text="Architecture Diagram" FontSize="16" FontWeight="SemiBold"/>
+                <TextBlock Text="SVG/Win2D diagram visualization will render here" FontSize="14" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                <Rectangle Height="500" Fill="{ThemeResource ControlFillColorDefaultBrush}" Stroke="{ThemeResource DividerStrokeColorDefaultBrush}" StrokeThickness="1"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
