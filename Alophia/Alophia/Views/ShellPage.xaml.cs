@@ -19,14 +19,6 @@ namespace Alophia.Views
             PipelineTitle.Text = ViewModel.PipelineTitle;
 
             // Wire up commands
-            ResetButton.Click += (s, e) => ViewModel.ResetCommand.Execute(null);
-            RunPauseButton.Click += (s, e) =>
-            {
-                if (ViewModel.IsRunning)
-                    ViewModel.PauseCommand.Execute(null);
-                else
-                    ViewModel.RunCommand.Execute(null);
-            };
 
             // Wire up tab navigation
             StagesTab.Click += (s, e) => TabContent.Navigate(typeof(StagesPage));
@@ -38,10 +30,6 @@ namespace Alophia.Views
             // Update UI on property changes
             ViewModel.PropertyChanged += (s, e) =>
             {
-                if (e.PropertyName == nameof(ViewModel.IsRunning))
-                {
-                    RunPauseButton.Content = ViewModel.IsRunning ? "Pause" : "Run";
-                }
                 if (e.PropertyName == nameof(ViewModel.TicksElapsed))
                 {
                     int week = ViewModel.TicksElapsed / 4;
@@ -56,7 +44,7 @@ namespace Alophia.Views
             };
 
             // Navigate to first tab
-            TabContent.Navigate(typeof(StagesPage));
+            TabContent.Navigate(typeof(RequirementsPage));
         }
     }
 }

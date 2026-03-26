@@ -12,8 +12,8 @@
                 <TextBlock Text="Project Pipeline Manager" FontSize="16" Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextAlignment="Center"/>
             </StackPanel>
 
-            <Button x:Name="LoadProjectButton" Content="Load Existing Project" Height="60" FontSize="16" HorizontalContentAlignment="Center"/>
-            <Button x:Name="CreateProjectButton" Content="Create New Project" Height="60" FontSize="16" HorizontalContentAlignment="Center"/>
+            <Button x:Name="LoadProjectButton" Content="Load Existing Project" Height="60" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+            <Button x:Name="CreateProjectButton" Content="Create New Project" Height="60" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
         </StackPanel>
     </Grid>
 </Page>
