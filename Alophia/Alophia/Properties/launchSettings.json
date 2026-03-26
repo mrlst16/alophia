@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Alophia (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Alophia (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
