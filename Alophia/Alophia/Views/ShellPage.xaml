@@ -8,25 +8,11 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Context Bar -->
-        <Grid Grid.Row="0" Padding="16,8" BorderThickness="0,0,0,0.5" BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-
-            <TextBlock Text="Context" FontSize="11" Foreground="{ThemeResource TextFillColorTertiaryBrush}" VerticalAlignment="Center" Margin="0,0,10,0"/>
-            <TextBox x:Name="ContextPathBox" Grid.Column="1" FontSize="12" Padding="8,6" Margin="0,0,10,0"/>
-            <Button Grid.Column="2" Content="Browse" FontSize="11" Padding="12,6"/>
-        </Grid>
-
         <!-- Header Bar -->
-        <Grid Grid.Row="1" Padding="16,12" BorderThickness="0,0,0,0.5" BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}">
+        <Grid Grid.Row="0" Padding="16,12" BorderThickness="0,0,0,0.5" BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
@@ -44,7 +30,7 @@
         </Grid>
 
         <!-- Tabs -->
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>

@@ -16,11 +16,6 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty]
     private AlophiaProject? project;
 
-    [ObservableProperty]
-    private string projectPath = string.Empty;
-
-    [ObservableProperty]
-    private bool isBrowsingPath;
 
     [ObservableProperty]
     private string pipelineTitle = "Alophia";
@@ -30,6 +25,8 @@ public partial class MainViewModel : ObservableObject
 
     [ObservableProperty]
     private bool isRunning;
+
+    public IProjectService ProjectService => _projectService;
 
     public MainViewModel(IProjectService projectService, ISimulationService simulationService)
     {
@@ -58,27 +55,16 @@ public partial class MainViewModel : ObservableObject
         {
             Project = project;
             PipelineTitle = project.Title;
-            ProjectPath = project.ActiveProjectPath ?? string.Empty;
         }
     }
 
-    public async Task SaveProject(Microsoft.UI.Xaml.Window owner)
+    public async Task CreateNewProject(string name, string contextPath, System.Collections.Generic.IList<string> selectedFolders)
     {
-        if (Project == null) return;
-
-        var picker = new Windows.Storage.Pickers.FileSavePicker();
-        picker.FileTypeChoices.Add("Alophia Project", new List<string> { ".ap" });
-        picker.DefaultFileExtension = ".ap";
-        picker.SuggestedFileName = Project.Title;
-
-        WinRT.Interop.InitializeWithWindow.Initialize(picker, WinRT.Interop.WindowNative.GetWindowHandle(owner));
-
-        var file = await picker.PickSaveFileAsync();
-        if (file != null)
+        var project = await _projectService.CreateNewProjectAsync(name, contextPath, selectedFolders);
+        if (project != null)
         {
-            await _projectService.SaveAsync(Project, file.Path);
-            ProjectPath = file.Path;
-            Project = Project with { ActiveProjectPath = file.Path };
+            Project = project;
+            PipelineTitle = project.Title;
         }
     }
 
@@ -104,9 +90,4 @@ public partial class MainViewModel : ObservableObject
         IsRunning = _simulationService.IsRunning;
     }
 
-    [RelayCommand]
-    public void ToggleBrowsePath()
-    {
-        IsBrowsingPath = !IsBrowsingPath;
-    }
 }

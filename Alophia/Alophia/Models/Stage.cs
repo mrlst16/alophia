@@ -10,4 +10,7 @@ public sealed record Stage
     public int Actual { get; init; }
     public string ColorSolid { get; init; } = "#6366F1";
     public string ColorLight { get; init; } = "#E0E7FF";
+    public string? FolderPath { get; init; }  // null = fixed stage, set = project stage
+
+    public bool IsProject => !string.IsNullOrEmpty(FolderPath);
 }

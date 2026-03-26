@@ -12,7 +12,8 @@
       "Bash(cp Alophia/Models/*.cs Alophia.Models/)",
       "Bash(cp Alophia/Services/*.cs Alophia.Services/)",
       "Read(//mnt/c/Users/mlantz/source/repos/alophia/**)",
-      "Bash(pwsh -Command \":*)"
+      "Bash(pwsh -Command \":*)",
+      "Bash(git add:*)"
     ]
   }
 }

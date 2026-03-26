@@ -10,7 +10,7 @@ namespace Alophia
         {
             InitializeComponent();
             ExtendsContentIntoTitleBar = true;
-            RootFrame.Navigate(typeof(ShellPage));
+            RootFrame.Navigate(typeof(StartupPage));
         }
     }
 }

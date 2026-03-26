@@ -11,6 +11,7 @@ namespace Alophia
         private Window? _window;
 
         public static IServiceProvider ServiceProvider { get; private set; } = null!;
+        public Window? Window => _window;
 
         public App()
         {

@@ -56,6 +56,79 @@ public class ProjectService : IProjectService
         }
     }
 
+    public async Task<AlophiaProject?> CreateNewProjectAsync(string name, string contextPath, IList<string> selectedFolders)
+    {
+        // Define fixed stages (6)
+        var fixedStages = new List<Stage>
+        {
+            new() { Id = "requirements", Label = "Requirements", Bot = "System", Start = 0, Duration = 2, ColorSolid = "#BA7517", ColorLight = "#FAEEDA" },
+            new() { Id = "ux", Label = "UX Design", Bot = "System", Start = 2, Duration = 3, ColorSolid = "#993C1D", ColorLight = "#FAECE7" },
+            new() { Id = "architecture", Label = "Architecture", Bot = "System", Start = 2, Duration = 3, ColorSolid = "#534AB7", ColorLight = "#EEEDFE" },
+        };
+
+        // Project stages (user-selected folders, Start=5, Duration=5 each)
+        var projectColors = new[]
+        {
+            ("#185FA5", "#E6F1FB"),
+            ("#0F6E56", "#E1F5EE"),
+            ("#1D6FA5", "#B5D4F4"),
+            ("#534AB7", "#EEEDFE"),
+        };
+
+        var projectStages = new List<Stage>();
+        for (int i = 0; i < selectedFolders.Count; i++)
+        {
+            var folderName = System.IO.Path.GetFileName(selectedFolders[i]);
+            var colorIdx = i % projectColors.Length;
+            projectStages.Add(new()
+            {
+                Id = $"project-{i}",
+                Label = folderName,
+                Bot = "System",
+                Start = 5,
+                Duration = 5,
+                FolderPath = selectedFolders[i],
+                ColorSolid = projectColors[colorIdx].Item1,
+                ColorLight = projectColors[colorIdx].Item2,
+            });
+        }
+
+        // Fixed stages after projects
+        var finalStages = new List<Stage>(fixedStages);
+        finalStages.AddRange(projectStages);
+        finalStages.AddRange(new[]
+        {
+            new Stage { Id = "be-testing", Label = "Back End Testing", Bot = "System", Start = 10, Duration = 3, ColorSolid = "#993556", ColorLight = "#FBEAF0" },
+            new Stage { Id = "e2e", Label = "E2E Testing", Bot = "System", Start = 10, Duration = 3, ColorSolid = "#3C3489", ColorLight = "#CECBF6" },
+            new Stage { Id = "docs", Label = "Documentation", Bot = "System", Start = 13, Duration = 2, ColorSolid = "#A32D2D", ColorLight = "#FCEBEB" },
+        });
+
+        var filePath = System.IO.Path.Combine(contextPath, $"{name}.ap");
+
+        var project = new AlophiaProject
+        {
+            Title = name,
+            TotalWeeks = 16,
+            ContextPath = contextPath,
+            FilePath = filePath,
+            Stages = finalStages,
+            Bots = [ new Bot { Name = "System", Initials = "SY", BgColor = "#F0F0F0", FgColor = "#333333" } ],
+        };
+
+        // Save to file
+        try
+        {
+            var folder = await Windows.Storage.StorageFolder.GetFolderFromPathAsync(contextPath);
+            var file = await folder.CreateFileAsync($"{name}.ap", Windows.Storage.CreationCollisionOption.ReplaceExisting);
+            await SaveAsync(project, file.Path);
+            return project;
+        }
+        catch (Exception ex)
+        {
+            throw new InvalidOperationException($"Failed to create project at {filePath}", ex);
+        }
+    }
+
     public AlophiaProject CreateSampleProject()
     {
         return new AlophiaProject

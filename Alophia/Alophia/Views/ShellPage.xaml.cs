@@ -15,9 +15,8 @@ namespace Alophia.Views
             ViewModel = App.ServiceProvider.GetRequiredService<MainViewModel>();
             DataContext = ViewModel;
 
-            // Bind UI elements
+            // Bind title
             PipelineTitle.Text = ViewModel.PipelineTitle;
-            ContextPathBox.Text = ViewModel.ProjectPath;
 
             // Wire up commands
             ResetButton.Click += (s, e) => ViewModel.ResetCommand.Execute(null);
